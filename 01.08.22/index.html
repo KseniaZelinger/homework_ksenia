@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="but">кнопка</button>
+    <button id="but1">кнопка2</button>
+    <button id="but3">кнопка3</button>
+    <div>
+        <input id="igor" type="text">
+        <input id="ksenia" type="text">
+        <button id="but4">кнопка4</button>
+    </div>
+
+    <div id="container"></div>
+    <div id="container1"></div>
+    <div id="container3"></div>
+    <script>
+        let a1 = { "one": 15, "two": 16, "five": 20 };
+        document.getElementById("but").onclick = () => {
+            document.getElementById("container").innerHTML += a1.two
+        }
+        let a2 = { "one": "hello", "two": "mahai", "five": "hi" };
+        document.getElementById("but1").onclick = () => {
+            document.getElementById("container1").innerHTML = a2.five
+        }
+        document.getElementById("but3").onclick = () => {
+            document.getElementById("container3").innerHTML = "one " + a2.one + ",<br>" + "two " + a2.two + ",<br>" + " five " + a2.five
+        }
+        document.getElementById("but4").onclick = () => {
+            let input1 = document.getElementById("igor").value
+            let input2 = document.getElementById("ksenia").value
+            console.log(input1, input2)
+            a2[input1] = input2
+            console.log(a2)
+
+        }
+
+    </script>
+</body>
+
+</html>

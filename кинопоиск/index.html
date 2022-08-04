@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #000 url(nubex.png);
+            color: #fff;
+            background-attachment: fixed;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&family=Square+Peg&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <button id="but">кнопка</button>
+    <div id="container"></div>
+    <script>
+        document.getElementById("but").onclick = () => {
+            fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1', {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': '9922383d-56a4-4fb3-910e-577eddb6732e',
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => res.json())
+                .then(
+                    (arrFilms) => {
+                        arrFilms.films.forEach(element => {
+                            console.log(element)
+                            document.getElementById('container').innerHTML += element.nameRu + '<br>'
+                            document.getElementById('container').innerHTML += element.year + '<br>'
+                            document.getElementById('container').innerHTML += element.rating + '<br>'
+                            document.getElementById('container').innerHTML += `<img src= ${element.posterUrl}>`
+                        });
+                    }
+
+                )
+                .catch(err => console.log(err))
+        }
+    </script>
+</body>
+
+</html>

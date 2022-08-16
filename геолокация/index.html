@@ -1,0 +1,43 @@
+< !DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>Геолокация</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>моя геолокация</h1>
+        </header>
+        <button id="but">Узнать</button>
+        <div id="container"></div>
+        <script>
+            document.getElementById("but").onclick = () => {
+                navigator.geolocation.getCurrentPosition(async function (geoLocation) {
+                    console.log('широта: ', geoLocation.coords.latitude)
+                    console.log('долгота: ', geoLocation.coords.longitude)
+
+                    const reqComparison = await fetch(
+                        `https://geotree.ru/coordinates?lat=55.07267&lon=82.97252&z=17&mlat=55.07354&mlon=82.971389=${geoLocation.coords.longitude},${geoLocation.coords.latitude}`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            method: 'GET',
+                        });
+                    const arrSortUserId = await reqComparison.text();
+                    console.log(arrSortUserId)
+                })
+            }
+
+        </script>
+    </body>
+
+    </html>

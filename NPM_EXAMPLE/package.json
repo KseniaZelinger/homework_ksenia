@@ -1,0 +1,16 @@
+{
+  "name": "first_test_kseniazelinger",
+  "version": "1.0.1",
+  "description": "простой проект для теста в школе ited",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "тест",
+    "ited",
+    "ksenia_zelinger"
+  ],
+  "author": "ksenia_zelinger",
+  "license": "ISC"
+}
